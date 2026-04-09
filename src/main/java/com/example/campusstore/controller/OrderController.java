@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.PageRequest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +47,10 @@ public class OrderController {
             return "error/403";
         }
 
-        List<Product> products = productRepository.findByIsActiveTrue();
+        // ✅ FIXED: using pageable method
+        List<Product> products = productRepository
+                .findByIsActiveTrue(PageRequest.of(0, 100))
+                .getContent();
 
         CreateOrderRequest request = new CreateOrderRequest();
         List<OrderItemRequest> items = new ArrayList<>();
@@ -66,8 +71,8 @@ public class OrderController {
 
     @PostMapping("/create")
     public String createOrder(@ModelAttribute CreateOrderRequest createOrderRequest,
-                              HttpSession session,
-                              Model model) {
+                             HttpSession session,
+                             Model model) {
         Long userId = sessionUtil.getCurrentUserId(session);
         String role = sessionUtil.getCurrentUserRole(session);
 
@@ -84,7 +89,11 @@ public class OrderController {
             return "redirect:/orders/" + order.getId();
         } catch (RuntimeException ex) {
             model.addAttribute("error", ex.getMessage());
-            model.addAttribute("products", productRepository.findByIsActiveTrue());
+
+            // ✅ FIXED: using pageable method
+            model.addAttribute("products",
+                    productRepository.findByIsActiveTrue(PageRequest.of(0, 100)).getContent());
+
             model.addAttribute("createOrderRequest", createOrderRequest);
             return "order/create";
         }
@@ -109,8 +118,8 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public String showOrderDetails(@PathVariable Long id,
-                                   HttpSession session,
-                                   Model model) {
+                                  HttpSession session,
+                                  Model model) {
         Long userId = sessionUtil.getCurrentUserId(session);
         String role = sessionUtil.getCurrentUserRole(session);
 
