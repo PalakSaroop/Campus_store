@@ -25,6 +25,25 @@
             color: #333;
         }
 
+        .filter {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -62,18 +81,11 @@
             color: white;
             border-radius: 8px;
             text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s;
         }
 
-        .btn:hover {
-            background: #00796B;
-            transform: scale(1.05);
-        }
-
-        .description {
-            max-width: 250px;
-            word-wrap: break-word;
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -82,26 +94,58 @@
 <div class="container">
     <h1>📚 Product Catalog</h1>
 
+    <!-- 🔍 FILTER FORM -->
+    <form method="get" action="/catalog" class="filter">
+        <input type="text" name="name" placeholder="Search name">
+        <input type="number" name="categoryId" placeholder="Category ID">
+
+        <label>
+            <input type="checkbox" name="inStock" value="true"> In Stock
+        </label>
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- TABLE -->
     <table>
         <tr>
             <th>Name</th>
             <th>Description</th>
             <th>Price ($)</th>
             <th>Stock</th>
+            <th>Action</th>
         </tr>
 
         <tr th:each="product : ${products}">
             <td th:text="${product.name}"></td>
-            <td class="description" th:text="${product.description}"></td>
+            <td th:text="${product.description}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${product.stockQty}"></td>
+
+            <!-- 🔥 DETAILS BUTTON -->
+            <td>
+                <a th:href="@{/product/{id}(id=${product.id})}">View</a>
+            </td>
         </tr>
     </table>
 
+    <!-- 🔁 PAGINATION -->
+    <div class="pagination">
+        <a th:if="${currentPage > 0}"
+           th:href="@{/catalog(page=${currentPage - 1})}">Previous</a>
+
+        <span> Page [[${currentPage}]] </span>
+
+        <a th:if="${currentPage + 1 < totalPages}"
+           th:href="@{/catalog(page=${currentPage + 1})}">Next</a>
+    </div>
+
+    <!-- NAV BUTTONS -->
     <div class="nav-buttons">
         <a href="/orders/create" class="btn">🛒 Create Order</a>
         <a href="/orders/history" class="btn">📦 My Orders</a>
     </div>
+
 </div>
 
 </body>

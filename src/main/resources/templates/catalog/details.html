@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Details</title>
+</head>
+<body>
+
+<h1>Product Details</h1>
+
+<!-- PRODUCT INFO -->
+<h2 th:text="${product.name}"></h2>
+
+<p><strong>Description:</strong> <span th:text="${product.description}"></span></p>
+
+<p><strong>Price:</strong> $<span th:text="${product.price}"></span></p>
+
+<p><strong>Stock:</strong> <span th:text="${product.stockQty}"></span></p>
+
+<p><strong>Category:</strong> 
+    <span th:text="${product.category.name}"></span>
+</p>
+
+<hr>
+
+<!-- BACK BUTTON -->
+<a href="/catalog">Back to Catalog</a>
+
+</body>
+</html>
