@@ -30,11 +30,25 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public Product() {
+    // Default constructor
+    public Product() {}
+
+    // Constructor (useful for seeding)
+    public Product(String name, String description, BigDecimal price, Integer stockQty, Boolean isActive, Category category) {
+        this.setName(name);
+        this.setPrice(price);
+        this.setStockQty(stockQty);
+        this.setCategory(category);
+        this.description = description;
+        this.isActive = isActive;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {   // important
+        this.id = id;
     }
 
     public String getName() {
@@ -42,6 +56,9 @@ public class Product {
     }
 
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Product name cannot be empty");
+        }
         this.name = name;
     }
 
@@ -53,11 +70,14 @@ public class Product {
         this.description = description;
     }
 
-    public java.math.BigDecimal getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(java.math.BigDecimal price) {
+    public void setPrice(BigDecimal price) {
+        if (price == null || price.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Price must be >= 0");
+        }
         this.price = price;
     }
 
@@ -66,6 +86,9 @@ public class Product {
     }
 
     public void setStockQty(Integer stockQty) {
+        if (stockQty == null || stockQty < 0) {
+            throw new IllegalArgumentException("Stock must be >= 0");
+        }
         this.stockQty = stockQty;
     }
 
@@ -82,6 +105,9 @@ public class Product {
     }
 
     public void setCategory(Category category) {
+        if (category == null) {
+            throw new IllegalArgumentException("Product must belong to a category");
+        }
         this.category = category;
     }
 }
