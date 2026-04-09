@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Catalog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #eef2f3, #dfe9f3);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #009688;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 12px 18px;
+            background: #009688;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00796B;
+            transform: scale(1.05);
+        }
+
+        .description {
+            max-width: 250px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 Product Catalog</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price ($)</th>
+            <th>Stock</th>
+        </tr>
+
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td class="description" th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.stockQty}"></td>
+        </tr>
+    </table>
+
+    <div class="nav-buttons">
+        <a href="/orders/create" class="btn">🛒 Create Order</a>
+        <a href="/orders/history" class="btn">📦 My Orders</a>
+    </div>
+</div>
+
+</body>
+</html>

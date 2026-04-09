@@ -1,0 +1,85 @@
+[[34;1mINFO[0m] Scanning for projects...
+[[34;1mINFO[0m] Loaded 22481 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m-------------------------------------------< [36;22mcom.example:campusstore[39;1m >--------------------------------------------[0m
+[[34;1mINFO[0m] [1mBuilding  0.0.1-SNAPSHOT[0m
+[[34;1mINFO[0m]   from pom.xml
+[[34;1mINFO[0m] [1m-----------------------------------------------------[ jar ]------------------------------------------------------[0m
+[[34;1mINFO[0m] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots-c1d4c55f9308e5ac18a4069bed41dca64d85c515.txt)
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m>>> [32;22mspring-boot:4.0.5:run[0m [1m(default-cli) > test-compile[0m @ [36mcampusstore[39;1m >>>[0m
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m--- [32;22mresources:3.3.1:resources[0m [1m(default-resources)[0m @ [36mcampusstore[39;1m ---[0m
+[[34;1mINFO[0m] Copying 1 resource from src/main/resources to target/classes
+[[34;1mINFO[0m] Copying 3 resources from src/main/resources to target/classes
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m--- [32;22mcompiler:3.14.1:compile[0m [1m(default-compile)[0m @ [36mcampusstore[39;1m ---[0m
+[[34;1mINFO[0m] Nothing to compile - all classes are up to date.
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m--- [32;22mresources:3.3.1:testResources[0m [1m(default-testResources)[0m @ [36mcampusstore[39;1m ---[0m
+[[34;1mINFO[0m] skip non existing resourceDirectory /workspaces/COMP_351_Project/campusstore/src/test/resources
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m--- [32;22mcompiler:3.14.1:testCompile[0m [1m(default-testCompile)[0m @ [36mcampusstore[39;1m ---[0m
+[[34;1mINFO[0m] Nothing to compile - all classes are up to date.
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m<<< [32;22mspring-boot:4.0.5:run[0m [1m(default-cli) < test-compile[0m @ [36mcampusstore[39;1m <<<[0m
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] 
+[[34;1mINFO[0m] [1m--- [32;22mspring-boot:4.0.5:run[0m [1m(default-cli)[0m @ [36mcampusstore[39;1m ---[0m
+[[34;1mINFO[0m] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot-40669f8efefaadb4c1705a2585cefc8851f735ac.txt)
+[[34;1mINFO[0m] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.5)
+
+2026-04-05T01:31:16.548Z  INFO 51112 --- [campusstore] [           main] c.e.campusstore.CampusstoreApplication   : Starting CampusstoreApplication using Java 25.0.1 with PID 51112 (/workspaces/COMP_351_Project/campusstore/target/classes started by codespace in /workspaces/COMP_351_Project/campusstore)
+2026-04-05T01:31:16.552Z  INFO 51112 --- [campusstore] [           main] c.e.campusstore.CampusstoreApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T01:31:17.468Z  INFO 51112 --- [campusstore] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-05T01:31:17.508Z  INFO 51112 --- [campusstore] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interface.
+2026-04-05T01:31:17.963Z  INFO 51112 --- [campusstore] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-05T01:31:17.973Z  INFO 51112 --- [campusstore] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T01:31:17.973Z  INFO 51112 --- [campusstore] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-05T01:31:18.009Z  INFO 51112 --- [campusstore] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1365 ms
+2026-04-05T01:31:18.071Z  WARN 51112 --- [campusstore] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceInitializationAutoConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+2026-04-05T01:31:18.074Z  INFO 51112 --- [campusstore] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-04-05T01:31:18.084Z  INFO 51112 --- [campusstore] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-05T01:31:18.094Z ERROR 51112 --- [campusstore] [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+[[34;1mINFO[0m] [1m------------------------------------------------------------------------------------------------------------------[0m
+[[34;1mINFO[0m] [31;1mBUILD FAILURE[0m
+[[34;1mINFO[0m] [1m------------------------------------------------------------------------------------------------------------------[0m
+[[34;1mINFO[0m] Total time:  5.624 s
+[[34;1mINFO[0m] Finished at: 2026-04-05T01:31:18Z
+[[34;1mINFO[0m] [1m------------------------------------------------------------------------------------------------------------------[0m
+[[31;1mERROR[0m] Failed to execute goal [32morg.springframework.boot:spring-boot-maven-plugin:4.0.5:run[0m [1m(default-cli)[0m on project [36mcampusstore[0m: [31;1mProcess terminated with exit code: 1[0m -> [1m[Help 1][0m[m
+[[31;1mERROR[0m] 
+[[31;1mERROR[0m] To see the full stack trace of the errors, re-run Maven with the '[1m-e[0m' switch
+[[31;1mERROR[0m] Re-run Maven using the '[1m-X[0m' switch to enable verbose output
+[[31;1mERROR[0m] 
+[[31;1mERROR[0m] For more information about the errors and possible solutions, please read the following articles:
+[[31;1mERROR[0m] [1m[Help 1][0m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
